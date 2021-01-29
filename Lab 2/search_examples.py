@@ -69,6 +69,7 @@ class Field:
 		self.size = size
 		self.board = [["." for _ in range(size)] for _ in range(size)]
 		self.current = deepcopy(self.board)
+		self.maxObstacles = 0
 
 	def size(self):
 		return self.size
@@ -83,19 +84,23 @@ class Field:
 		self.board[row][col] = 'E'
 		self.set_current((row,col),'E')
 
+	# Sets the maxObstacles to be used on board, call create_random_obstacles to populate the board (obstacles applied automatically on reset)
+	def set_maxObstacles(self, maxObstacles):
+		self.maxObstacles = maxObstacles
+
 	def reset_current(self):
 		self.current = deepcopy(self.board)
-		# Randomly add up to 10 obstacles
-		for i in range(0,10):
-			self.current[random.randint(0, self.size - 1)][random.randint(0, self.size - 1)] = '*'
+		# If obstacles are set, generate new ones for the reset board
+		if self.maxObstacles > 0:
+			self.create_random_obstacles()
 
 	def set_current(self,state,string):
 		self.current[state[0]][state[1]] = string
 
-	# Adds obstacles denoted by astrisks to the field in random locations excuding the start and goal nodes
-	def create_random_obstacles(self, maxObstacles):
+	# Adds obstacles denoted by astrisks to the field in random locations excuding the start and goal nodes !!! REQUIRES START, END AND MAXOBSTACLES TO BE SET !!!
+	def create_random_obstacles(self):
 		# Randomly add up to maxObstacles obstacles
-		for i in range(0,maxObstacles):
+		for i in range(0,self.maxObstacles):
 			randRow = random.randint(0, self.size - 1)
 			randCol = random.randint(0, self.size - 1)
 
@@ -523,8 +528,9 @@ class Searcher:
 			for child in self.get_neighbors(current):
 				print("",child)
 				new_cost = cost_so_far[current] + 1 # You took one step past current
-				if child not in cost_so_far.keys() or \
-				   new_cost < cost_so_far[child]:
+				if (child not in cost_so_far.keys() or \
+				   new_cost < cost_so_far[child]) and \
+				   self.field.current[child[0]][child[1]] != '*':
 					cost_so_far[child] = new_cost
 					priority = new_cost + self.heuristic(child)
 					frontier.put(child,priority)
@@ -575,8 +581,9 @@ class Searcher:
 			'''
 			for child in self.get_diagonal_neighbors(current):
 				new_cost = cost_so_far[current] + 1 # You took one step past current
-				if child not in cost_so_far.keys() or \
-				   new_cost < cost_so_far[child]:
+				if (child not in cost_so_far.keys() or \
+				   new_cost < cost_so_far[child]) and \
+				   self.field.current[child[0]][child[1]] != '*':
 					cost_so_far[child] = new_cost
 					priority = new_cost + self.diagonal_distance(child)
 					frontier.put(child,priority)
@@ -606,12 +613,15 @@ class Searcher:
 field1 = Field(20)
 field1.set_start(0,0)
 field1.set_end(19,19)
-field1.create_random_obstacles(50)
+field1.set_maxObstacles(50)
+field1.create_random_obstacles()
+
 field2 = Field(20)
 field2.set_start(0,0)
 field2.set_end(19,19)
 searcher1 = Searcher(field1)
 searcher2 = Searcher(field2)
+
 for field, searcher in [(field1, searcher1),(field2, searcher2)]:
 	'''
 	searcher.breadth_first()
