@@ -70,10 +70,6 @@ class Field:
 		self.board = [["." for _ in range(size)] for _ in range(size)]
 		self.current = deepcopy(self.board)
 
-		# Randomly add up to 10 obstacles
-		for i in range(0,10):
-			self.current[random.randint(0, self.size - 1)][random.randint(0, self.size - 1)] = '*'
-
 	def size(self):
 		return self.size
 
@@ -95,6 +91,16 @@ class Field:
 
 	def set_current(self,state,string):
 		self.current[state[0]][state[1]] = string
+
+	# Adds obstacles denoted by astrisks to the field in random locations excuding the start and goal nodes
+	def create_random_obstacles(self, maxObstacles):
+		# Randomly add up to maxObstacles obstacles
+		for i in range(0,maxObstacles):
+			randRow = random.randint(0, self.size - 1)
+			randCol = random.randint(0, self.size - 1)
+
+			if (randRow, randCol) != self.start and (randRow, randCol) != self.end:
+				self.current[randRow][randCol] = '*'
 
 	def to_s(self):
 		'''
@@ -600,32 +606,44 @@ class Searcher:
 field = Field(20)
 field.set_start(0,0)
 field.set_end(19,19)
+field.create_random_obstacles(20)
 searcher = Searcher(field)
+
 searcher.breadth_first()
 input("Press Enter to continue...")
 searcher.reset()
+
 searcher.breadth_first_diagonal()
 input("Press Enter to continue...")
 searcher.reset()
+
 searcher.depth_first()
 input("Press Enter to continue...")
 searcher.reset()
+
 searcher.depth_first_diagonal()
 input("Press Enter to continue...")
 searcher.reset()
+
 searcher.best_first()
 input("Press Enter to continue...")
 searcher.reset()
+
 searcher.best_first_diagonal()
 input("Press Enter to continue...")
 searcher.reset()
+
 searcher.uniform_cost()
 input("Press Enter to continue...")
 searcher.reset()
+
 searcher.uniform_cost_diagonal()
 input("Press Enter to continue...")
 searcher.reset()
+
 searcher.astar()
 input("Press a Enter to continue...")
 searcher.reset()
+
 searcher.astar_diagonal()
+input("Press a Enter to continue...")
