@@ -603,47 +603,52 @@ class Searcher:
 #=====================
 # Main Algorithm
 
-field = Field(20)
-field.set_start(0,0)
-field.set_end(19,19)
-field.create_random_obstacles(20)
-searcher = Searcher(field)
+field1 = Field(20)
+field1.set_start(0,0)
+field1.set_end(19,19)
+field1.create_random_obstacles(50)
+field2 = Field(20)
+field2.set_start(0,0)
+field2.set_end(19,19)
+searcher1 = Searcher(field1)
+searcher2 = Searcher(field2)
+for field, searcher in [(field1, searcher1),(field2, searcher2)]:
+	'''
+	searcher.breadth_first()
+	input("Press Enter to continue...")
+	searcher.reset()
 
-searcher.breadth_first()
-input("Press Enter to continue...")
-searcher.reset()
+	searcher.breadth_first_diagonal()
+	input("Press Enter to continue...")
+	searcher.reset()
 
-searcher.breadth_first_diagonal()
-input("Press Enter to continue...")
-searcher.reset()
+	searcher.depth_first()
+	input("Press Enter to continue...")
+	searcher.reset()
 
-searcher.depth_first()
-input("Press Enter to continue...")
-searcher.reset()
+	searcher.depth_first_diagonal()
+	input("Press Enter to continue...")
+	searcher.reset()
+	
+	searcher.best_first()
+	input("Press Enter to continue...")
+	searcher.reset()
 
-searcher.depth_first_diagonal()
-input("Press Enter to continue...")
-searcher.reset()
+	searcher.best_first_diagonal()
+	input("Press Enter to continue...")
+	searcher.reset()
+	searcher.uniform_cost()
+	input("Press Enter to continue...")
+	searcher.reset()
+	
+	searcher.uniform_cost_diagonal()
+	input("Press Enter to continue...")
+	searcher.reset()
+	'''
+	searcher.astar()
+	input("Press a Enter to continue...")
+	searcher.reset()
 
-searcher.best_first()
-input("Press Enter to continue...")
-searcher.reset()
-
-searcher.best_first_diagonal()
-input("Press Enter to continue...")
-searcher.reset()
-
-searcher.uniform_cost()
-input("Press Enter to continue...")
-searcher.reset()
-
-searcher.uniform_cost_diagonal()
-input("Press Enter to continue...")
-searcher.reset()
-
-searcher.astar()
-input("Press a Enter to continue...")
-searcher.reset()
-
-searcher.astar_diagonal()
-input("Press a Enter to continue...")
+	searcher.astar_diagonal()
+	input("Press a Enter to continue...")
+	
