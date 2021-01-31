@@ -1,0 +1,43 @@
+Results from Search Algorithm Attempts:
+
+
+
+----------------
+
+<function Searcher.breadth_first at 0x000001DEE7AEBB88> took 16330.241 ms
+
+----------------
+
+<function Searcher.breadth_first_diagonal at 0x000001DEE7AEBCA8> took 15697.667 ms
+
+----------------
+
+<function Searcher.depth_first at 0x000001DEE7AEBDC8> took 7886.700 ms
+
+----------------
+
+<function Searcher.depth_first_diagonal at 0x000001DEE7AEBEE8> took 1019.533 ms
+
+----------------
+
+<function Searcher.best_first at 0x000001DEE7AEC288> took 1784.081 ms
+
+----------------
+
+<function Searcher.best_first_diagonal at 0x000001DEE7AEC3A8> took 929.918 ms
+
+----------------
+
+<function Searcher.uniform_cost at 0x000001DEE7AEC048> took 37.207 ms
+
+----------------
+
+<function Searcher.uniform_cost_diagonal at 0x000001DEE7AEC168> took 16340.718 ms
+
+----------------
+
+<function Searcher.astar at 0x000001DEE7AEC4C8> took 25121.806 ms
+
+----------------
+
+<function Searcher.astar_diagonal at 0x000001DEE7AEC5E8> took 1925.117 ms

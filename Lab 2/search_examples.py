@@ -13,7 +13,7 @@ from operator import itemgetter
 
 #CLEAR = "CLS"   # Clear for Windows
 CLEAR = "clear" # Clear for Linux and macOS
-
+ALL_RESULTS = "Results from Search Algorithm Attempts:\n\n"
 #===============================================================================
 # Method: method_timing
 #  Purpose: A timing function that wraps the called method with timing code.
@@ -21,10 +21,13 @@ CLEAR = "clear" # Clear for Linux and macOS
 #            func, and then returns the difference.
 def method_timing(func):
 	def wrapper(*arg):
+		global ALL_RESULTS
 		t1 = time.time()
 		res = func(*arg)
 		t2 = time.time()
-		print ('%s took %0.3f ms' % (func, (t2-t1)*1000.0))
+		output_string = '%s took %0.3f ms' % (func, (t2-t1)*1000.0)
+		ALL_RESULTS += f"\n\n----------------\n\n{output_string}"
+		print(output_string)
 		return [res,(t2-t1)*1000.0]
 	return wrapper
 
@@ -623,7 +626,6 @@ searcher1 = Searcher(field1)
 searcher2 = Searcher(field2)
 
 for field, searcher in [(field1, searcher1),(field2, searcher2)]:
-	'''
 	searcher.breadth_first()
 	input("Press Enter to continue...")
 	searcher.reset()
@@ -654,7 +656,7 @@ for field, searcher in [(field1, searcher1),(field2, searcher2)]:
 	searcher.uniform_cost_diagonal()
 	input("Press Enter to continue...")
 	searcher.reset()
-	'''
+	
 	searcher.astar()
 	input("Press a Enter to continue...")
 	searcher.reset()
@@ -662,3 +664,11 @@ for field, searcher in [(field1, searcher1),(field2, searcher2)]:
 	searcher.astar_diagonal()
 	input("Press a Enter to continue...")
 	
+	if field == field1:
+		text_file = open(f"{field1.maxObstacles}-NumObstacles-Results.txt", "w")
+		text_file.write(ALL_RESULTS)
+		text_file.close()
+	else:
+		text_file = open("Non-Obstacle-Results.txt", "w")
+		text_file.write(ALL_RESULTS)
+		text_file.close()
