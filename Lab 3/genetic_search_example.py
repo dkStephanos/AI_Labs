@@ -369,7 +369,8 @@ class GeneticSearcher:
 		self.generation_list.append(self.population)
 
 
-	def selection(self, population):
+	# Set rand to True to divert typical functionality and choose parents completely at random
+	def selection(self, population, rand=False):
 		'''
 		Selects parents from the given population, assuming that the population is
 		sorted from best to worst fitness.
@@ -388,21 +389,30 @@ class GeneticSearcher:
 
 		'''
 		# Set the elitism factor and calculate the max index
-		factor = 0.5	# Select from top 50%
-		high = math.ceil(self.population_size*factor)
+		if rand == False:
+			factor = 0.5	# Select from top 50%
+			high = math.ceil(self.population_size*factor)
+		else:
+			high = self.population_size - 1
 
 		# Choose parents randomly
 		parent1 = population[random.randint(0,high)][0]
 		parent2 = population[random.randint(0,high)][0]
 
 		# If the same parent is chosen, pick another
+		# we can get stuck here if we converge early, if we pick the same parent ten times in a row, just bail out
+		count = 0
 		while str(parent1) == str(parent2):
 			parent2 = population[random.randint(0,high)][0]
+			count += 1
+			if count == 10:
+				break
 
 		return parent1, parent2
 
 
-	def reproduce(self, parent1, parent2):
+	# Set reproduction_type to "singlepoint"/"multipoint" to divert from typical behavior and instead perform a singlepoint/multipoint reproduction strategy
+	def reproduce(self, parent1, parent2, reproduction_type="uniform"):
 		'''
 		Uses the Uniform Crossover method to reproduce with parent1 and parent2
 
@@ -422,15 +432,29 @@ class GeneticSearcher:
 		# Initialization
 		child = []
 		
-		# Step through each item in the chromosome and randomly choose which
-		#  parent's genetic material to select
-		for i in range(self.chromosome_size):
-			bit = None
-			if random.randint(0,1) == 0:
-				bit = parent1[i]
-			else:
-				bit = parent2[i]
-			child.append(bit)
+		if reproduction_type == "singlepoint":
+			# Randomly choose a split point
+			split_point = self.chromosome_size - random.randint(0, self.chromosome_size)
+			child = parent1[:split_point] + parent2[split_point:]
+		elif reproduction_type == "multipoint":
+			points = []
+			num_points = random.randint(1,3)
+			while len(points) < num_points:
+				split_point = self.chromosome_size - random.randint(0, self.chromosome_size) 
+				if split_point not in points:
+					points.append(split_point)
+			for split_point in points:
+				child += parent1[:split_point] + parent2[split_point:]
+		else:
+			# Step through each item in the chromosome and randomly choose which
+			#  parent's genetic material to select
+			for i in range(self.chromosome_size):
+				bit = None
+				if random.randint(0,1) == 0:
+					bit = parent1[i]
+				else:
+					bit = parent2[i]
+				child.append(bit)
 
 		return [child, self.fitness(child)]
 
@@ -490,7 +514,7 @@ class GeneticSearcher:
 			while len(new_population) < self.population_size:
 				parent1, parent2 = self.selection(self.generation_list[generation - 1])
 
-				child = self.reproduce(parent1, parent2)
+				child = self.reproduce(parent1, parent2, "singlepoint")
 
 				if (random.random() < self.mutation_rate):
 					child = self.mutate(child[0])
