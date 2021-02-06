@@ -431,20 +431,18 @@ class GeneticSearcher:
 		'''
 		# Initialization
 		child = []
-		
 		if reproduction_type == "singlepoint":
 			# Randomly choose a split point
 			split_point = self.chromosome_size - random.randint(0, self.chromosome_size)
 			child = parent1[:split_point] + parent2[split_point:]
 		elif reproduction_type == "multipoint":
 			points = []
-			num_points = random.randint(1,3)
-			while len(points) < num_points:
+			while len(points) < 2: 
 				split_point = self.chromosome_size - random.randint(0, self.chromosome_size) 
 				if split_point not in points:
 					points.append(split_point)
-			for split_point in points:
-				child += parent1[:split_point] + parent2[split_point:]
+			points.sort()
+			child = parent1[:points[0]] + parent2[points[0]:points[1]] + parent1[points[1]:]
 		else:
 			# Step through each item in the chromosome and randomly choose which
 			#  parent's genetic material to select
@@ -514,7 +512,7 @@ class GeneticSearcher:
 			while len(new_population) < self.population_size:
 				parent1, parent2 = self.selection(self.generation_list[generation - 1])
 
-				child = self.reproduce(parent1, parent2, "singlepoint")
+				child = self.reproduce(parent1, parent2, "multipoint")
 
 				if (random.random() < self.mutation_rate):
 					child = self.mutate(child[0])
