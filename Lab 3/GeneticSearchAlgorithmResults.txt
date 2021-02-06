@@ -1,0 +1,203 @@
+Results for Genetic Search Algorithm Iterations
+-------------------------
+
+----------------------------------------
+
+Next Itterations: Params = {generations: 137, population_size: 16, mutation_rate: 0.07}
+----------------------------------------
+
+Results for field: 10x10:
+Lowest Fitness: -451 Reached at Generation: 90
+
+<function GeneticSearcher.run at 0x000001FA6D7784C0> took 610.483 ms
+
+Results for field: 20x20:
+Lowest Fitness: -356 Reached at Generation: 2
+
+<function GeneticSearcher.run at 0x000001FA6D7784C0> took 1242.565 ms
+
+Results for field: 30x30:
+Lowest Fitness: -253 Reached at Generation: 82
+
+<function GeneticSearcher.run at 0x000001FA6D7784C0> took 2246.250 ms
+
+----------------------------------------
+
+Next Itterations: Params = {generations: 93, population_size: 20, mutation_rate: 0.55}
+----------------------------------------
+
+Results for field: 10x10:
+Lowest Fitness: -467 Reached at Generation: 13
+
+<function GeneticSearcher.run at 0x000001FA6D7784C0> took 573.203 ms
+
+Results for field: 20x20:
+Lowest Fitness: -394 Reached at Generation: 38
+
+<function GeneticSearcher.run at 0x000001FA6D7784C0> took 1256.737 ms
+
+Results for field: 30x30:
+Lowest Fitness: 240 Reached at Generation: 2
+
+<function GeneticSearcher.run at 0x000001FA6D7784C0> took 2339.531 ms
+
+----------------------------------------
+
+Next Itterations: Params = {generations: 105, population_size: 28, mutation_rate: 0.65}
+----------------------------------------
+
+Results for field: 10x10:
+Lowest Fitness: -438 Reached at Generation: 27
+
+<function GeneticSearcher.run at 0x000001FA6D7784C0> took 625.098 ms
+
+Results for field: 20x20:
+Lowest Fitness: -243 Reached at Generation: 2
+
+<function GeneticSearcher.run at 0x000001FA6D7784C0> took 1399.747 ms
+
+Results for field: 30x30:
+Lowest Fitness: 26 Reached at Generation: 2
+
+<function GeneticSearcher.run at 0x000001FA6D7784C0> took 2333.505 ms
+
+----------------------------------------
+
+Next Itterations: Params = {generations: 82, population_size: 27, mutation_rate: 0.28}
+----------------------------------------
+
+Results for field: 10x10:
+Lowest Fitness: -476 Reached at Generation: 2
+
+<function GeneticSearcher.run at 0x000001FA6D7784C0> took 549.176 ms
+
+Results for field: 20x20:
+Lowest Fitness: -413 Reached at Generation: 64
+
+<function GeneticSearcher.run at 0x000001FA6D7784C0> took 1335.336 ms
+
+Results for field: 30x30:
+Lowest Fitness: -271 Reached at Generation: 68
+
+<function GeneticSearcher.run at 0x000001FA6D7784C0> took 2328.551 ms
+
+----------------------------------------
+
+Next Itterations: Params = {generations: 103, population_size: 11, mutation_rate: 0.73}
+----------------------------------------
+
+Results for field: 10x10:
+Lowest Fitness: -470 Reached at Generation: 69
+
+<function GeneticSearcher.run at 0x000001FA6D7784C0> took 617.917 ms
+
+Results for field: 20x20:
+Lowest Fitness: -219 Reached at Generation: 51
+
+<function GeneticSearcher.run at 0x000001FA6D7784C0> took 1351.661 ms
+
+Results for field: 30x30:
+Lowest Fitness: -133 Reached at Generation: 2
+
+<function GeneticSearcher.run at 0x000001FA6D7784C0> took 2386.269 ms
+
+----------------------------------------
+
+Next Itterations: Params = {generations: 138, population_size: 17, mutation_rate: 0.46}
+----------------------------------------
+
+Results for field: 10x10:
+Lowest Fitness: -483 Reached at Generation: 29
+
+<function GeneticSearcher.run at 0x000001FA6D7784C0> took 604.982 ms
+
+Results for field: 20x20:
+Lowest Fitness: -357 Reached at Generation: 98
+
+<function GeneticSearcher.run at 0x000001FA6D7784C0> took 1306.931 ms
+
+Results for field: 30x30:
+Lowest Fitness: 252 Reached at Generation: 2
+
+<function GeneticSearcher.run at 0x000001FA6D7784C0> took 2348.768 ms
+
+----------------------------------------
+
+Next Itterations: Params = {generations: 140, population_size: 15, mutation_rate: 0.23}
+----------------------------------------
+
+Results for field: 10x10:
+Lowest Fitness: -471 Reached at Generation: 45
+
+<function GeneticSearcher.run at 0x000001FA6D7784C0> took 599.567 ms
+
+Results for field: 20x20:
+Lowest Fitness: -399 Reached at Generation: 2
+
+<function GeneticSearcher.run at 0x000001FA6D7784C0> took 1344.988 ms
+
+Results for field: 30x30:
+Lowest Fitness: -178 Reached at Generation: 87
+
+<function GeneticSearcher.run at 0x000001FA6D7784C0> took 2352.909 ms
+
+----------------------------------------
+
+Next Itterations: Params = {generations: 139, population_size: 8, mutation_rate: 0.39}
+----------------------------------------
+
+Results for field: 10x10:
+Lowest Fitness: -487 Reached at Generation: 42
+
+<function GeneticSearcher.run at 0x000001FA6D7784C0> took 563.653 ms
+
+Results for field: 20x20:
+Lowest Fitness: -166 Reached at Generation: 67
+
+<function GeneticSearcher.run at 0x000001FA6D7784C0> took 1433.692 ms
+
+Results for field: 30x30:
+Lowest Fitness: -88 Reached at Generation: 2
+
+<function GeneticSearcher.run at 0x000001FA6D7784C0> took 2430.710 ms
+
+----------------------------------------
+
+Next Itterations: Params = {generations: 102, population_size: 26, mutation_rate: 0.89}
+----------------------------------------
+
+Results for field: 10x10:
+Lowest Fitness: -476 Reached at Generation: 51
+
+<function GeneticSearcher.run at 0x000001FA6D7784C0> took 580.986 ms
+
+Results for field: 20x20:
+Lowest Fitness: -216 Reached at Generation: 2
+
+<function GeneticSearcher.run at 0x000001FA6D7784C0> took 1356.037 ms
+
+Results for field: 30x30:
+Lowest Fitness: -174 Reached at Generation: 98
+
+<function GeneticSearcher.run at 0x000001FA6D7784C0> took 2355.650 ms
+
+----------------------------------------
+
+Next Itterations: Params = {generations: 142, population_size: 40, mutation_rate: 0.8200000000000001}
+----------------------------------------
+
+Results for field: 10x10:
+Lowest Fitness: -481 Reached at Generation: 86
+
+<function GeneticSearcher.run at 0x000001FA6D7784C0> took 571.001 ms
+
+Results for field: 20x20:
+Lowest Fitness: -331 Reached at Generation: 2
+
+<function GeneticSearcher.run at 0x000001FA6D7784C0> took 1399.836 ms
+
+Results for field: 30x30:
+Lowest Fitness: -251 Reached at Generation: 2
+
+<function GeneticSearcher.run at 0x000001FA6D7784C0> took 2362.380 ms
+
