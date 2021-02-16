@@ -148,7 +148,7 @@ def minimax(board, depth, maximizingPlayer, alpha=-math.inf, beta=math.inf):
 			if new_score > alpha:
 				alpha = new_score
 				column = col
-			else:
+			elif new_score >= beta:
 				print("MAX:",column, alpha, beta)
 				return column, alpha
 		print("MAX:",column, alpha, beta)
@@ -164,7 +164,7 @@ def minimax(board, depth, maximizingPlayer, alpha=-math.inf, beta=math.inf):
 			if new_score < beta:
 				beta = new_score
 				column = col
-			else:
+			elif new_score <= alpha:
 				print("MIN:",column, alpha, beta)
 				return column, beta
 		print("MIN:",column, alpha, beta)
