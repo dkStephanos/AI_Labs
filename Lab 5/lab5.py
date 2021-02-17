@@ -4,9 +4,9 @@ import sys
 import time
 
 RATE = 0.1
-CLEAR = "clear"     # "CLS" for Windows
+CLEAR = "CLS"     # "CLS" for Windows
 queens = {}         # Dictionary showing the location of each queen
-size = int(sys.argv[1]) # Get the board size from the command line
+size = 10 # Get the board size from the command line
 
 board = [[0 for c in range(size)] for r in range(size)]
 
@@ -38,7 +38,7 @@ def addToThreats(row, col, change):
 
 def backtrack_search(row=0):
     if row == size:
-        os.system("clear")
+        os.system(CLEAR)
         print("SOLUTION:\n")
         display(board)
         return True
@@ -47,7 +47,7 @@ def backtrack_search(row=0):
             queens[row] = col
             if board[row][col] == 0:
                 addToThreats(row,col,1)
-                os.system("clear")
+                os.system(CLEAR)
                 print("Row",row,"\n")
                 display(board)
                 time.sleep(RATE)
@@ -55,7 +55,7 @@ def backtrack_search(row=0):
                 if (status):
                     return True
                 addToThreats(row,col,-1)    # BACKTRACK
-                os.system("clear")
+                os.system(CLEAR)
                 print("Row",row,"\n")
                 display(board)
                 time.sleep(RATE)
