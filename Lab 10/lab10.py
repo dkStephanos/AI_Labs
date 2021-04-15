@@ -1,5 +1,6 @@
 ### Helper Libraries
 import numpy as np                  # Linear Algebra
+import pandas as pd
 import matplotlib.pyplot as plt     # Plotting like Matlab
 
 ### Scikit-Learn ML Data Manipulation
@@ -15,27 +16,39 @@ from sklearn.neighbors import KNeighborsClassifier  #KNN Classifier
 
 
 def linear_regression(X_train, Y_train, X_test, Y_test):
-    # TODO
-    return None
+    linreg = LinearRegression()
+    model = linreg.fit(X_train, Y_train)
+    score = model.score(X_test, Y_test)
+
+    return linreg, model, score
 
 
 def support_vector_machine(X_train, Y_train, X_test, Y_test):
-    # TODO
-    return None
+    svm = SVC()
+    model = svm.fit(X_train, Y_train)
+    score = model.score(X_test, Y_test)
+
+    return svm, model, score
 
 
 def decision_tree(X_train, Y_train, X_test, Y_test):
-    # TODO
-    return None
+    dt = DecisionTreeClassifier()
+    model = dt.fit(X_train, Y_train)
+    score = model.score(X_test, Y_test)
+
+    return dt, model, score
 
 
 def k_nearest_neighbors(X_train, Y_train, X_test, Y_test):
-    # TODO
-    return None
+    knn = KNeighborsClassifier(n_neighbors=2)
+    model = knn.fit(X_train, Y_train)
+    score = model.score(X_test, Y_test)
+
+    return knn, model, score
 
 
 def split_test_train(test_percent, X, Y):
-    return train_test_split(X, y, test_size=test_percent, random_state=22)
+    return train_test_split(X, Y, test_size=test_percent, random_state=22)
 
 
 def plot_learning_curve(estimator, title, X, y, axes=None, ylim=None, cv=None,
@@ -156,3 +169,22 @@ def plot_learning_curve(estimator, title, X, y, axes=None, ylim=None, cv=None,
     return plt
 
 ### TODO: Main code
+iris = datasets.load_iris()
+X = pd.DataFrame(iris.data)
+y = iris.target
+
+estimators = {
+    'linear_regression': linear_regression,
+    'support_vector_machine': support_vector_machine,
+    'decision_tree': decision_tree,
+    'k_nearest_neighbors': k_nearest_neighbors,
+}
+
+for estimator in estimators:
+    print(f'\n\nStarting classification for estimator {estimator}')
+    print('-------------------------\n')
+    X_train, X_test, Y_train, Y_test = split_test_train(.3,X,y)
+    est, model, score = estimators[estimator](X_train, Y_train, X_test, Y_test)
+    print(f'Score: {score}')
+    plt = plot_learning_curve(est, f'Learning Curve for {estimator}', X_test, Y_test)
+    plt.show()
